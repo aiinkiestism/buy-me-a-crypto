@@ -1,0 +1,31 @@
+{
+  "lock": false,
+  "fmt": {
+    "files": {
+      "include": [],
+      "exclude": []
+    },
+    "options": {}
+  },
+  "lint": {
+    "files": {
+      "include": [],
+      "exclude": []
+    },
+    "rules": {
+      "include": [],
+      "exclude": []
+    }
+  },
+  "tasks": {
+    "check:types": "deno check **/*.ts && deno check **/*.tsx",
+    "test": "deno test -A"
+  },
+  "test": {
+    "files": {
+      "include": [],
+      "exclude": []
+    }
+  },
+  "compilerOptions": {}
+}
