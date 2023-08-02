@@ -4,3 +4,6 @@
 *bak
 .history
 .temp/**
+Thumbs.db
+npm/
+coverage

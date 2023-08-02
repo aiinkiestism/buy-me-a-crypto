@@ -1,1 +1,3 @@
-console.log('entrypoint')
+export function call(val: unknown) {
+  return val;
+}
