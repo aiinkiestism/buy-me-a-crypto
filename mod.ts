@@ -1,3 +1,1 @@
-export function call(val: unknown) {
-  return val;
-}
+export * from './src';
