@@ -1,5 +1,6 @@
-import { AvailableNetwork, AvailableTokens, CustomError } from './types';
+import { AvailableNetwork, AvailableTokens, CustomError } from './types.ts';
 
+// deno-lint-ignore require-await
 export async function chooseOptions(
   token?: AvailableTokens,
   network?: AvailableNetwork,
@@ -16,7 +17,8 @@ export async function chooseOptions(
   }
 }
 
-// I am guessing this module need to store options and wallet state to somewhere, especially there's no wallet connection and state in the application provider.
+// I am guessing this module need to store options and wallet state to somewhere, especially if there's no wallet connection and state in the application provider.
+// deno-lint-ignore require-await
 export async function connectWallet(network: AvailableNetwork): Promise<void | CustomError> {
   switch (network) {
     case AvailableNetwork.ETH_MAINNET:
