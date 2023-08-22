@@ -1,6 +1,5 @@
 import { AvailableOptionsType,AvailableNetworks,AvailableTokens } from "./types.ts";
 
-
 export const AvailableOptions: AvailableOptionsType = {
   ETH_MAINNET: {
     key: AvailableNetworks.ETH_MAINNET,
