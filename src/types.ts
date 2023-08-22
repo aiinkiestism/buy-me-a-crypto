@@ -21,27 +21,19 @@ export type NetworkProps = {
 };
 
 export type AvailableOptionsType = {
-  ETH_MAINNET: NetworkProps,
+  ETH_MAINNET: NetworkProps;
 };
 
-export const AvailableOptions: AvailableOptionsType = {
-  ETH_MAINNET: {
-    key: AvailableNetworks.ETH_MAINNET,
-    tokens: [AvailableTokens.ETH, AvailableTokens.DAI, AvailableTokens.USDC],
-    name: 'Ethereum Mainnet',
-    chainId: 1,
-    network: 'homestead',
-    explorer: {
-      url: "https://etherscan.io",
-      apiUrl: "https://api.etherscan.io"
-    },
-  },
-};
-
-export const DEFAULT_MAX_AMOUNT = 0;
+export enum AvailableWallets {
+  WEB3MODAL = 'WEB3MODAL',
+  WALLET_CONNECT = 'WALLET_CONNECT',
+}
 
 export enum CustomError {
   NOT_AVAILABLE_NETWORK = 'Please provide the available network.',
+  NOT_AVAILABLE_WALLET = 'Please provide the available wallet wrapper.',
   EXCEED_MAX_AMOUNT = 'Amount exceeds MAX AMOUNT.',
   INVALID_OPTIONS = 'Invalid Options.',
+  NO_PROJECTID = 'No Project ID of Wallet Connect Web3Modal.',
+  NO_WALLET_METADATA = 'No Wallet Metadata.',
 }

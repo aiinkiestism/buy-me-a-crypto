@@ -1,5 +1,6 @@
 import { ethers } from 'npm:ethers@6.7.1';
-import { CustomError, DEFAULT_MAX_AMOUNT } from './types.ts';
+import { CustomError } from './types.ts';
+import { DEFAULT_MAX_AMOUNT } from "./consts.ts";
 
 // deno-lint-ignore require-await
 export async function transfer(

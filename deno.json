@@ -27,5 +27,7 @@
       "exclude": []
     }
   },
-  "compilerOptions": {}
+  "compilerOptions": {
+    "lib": ["dom", "deno.ns"]
+  }
 }
