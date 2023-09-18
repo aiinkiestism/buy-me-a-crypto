@@ -1,4 +1,3 @@
-// import EthereumProvider from "npm:@walletconnect/ethereum-provider@2.9.1";
 import { AvailableOptions } from "./consts.ts";
 import { AvailableNetworks, AvailableTokens, AvailableWallets, CustomError, NetworkProps, } from './types.ts';
 import { EthereumProvider } from 'npm:@walletconnect/ethereum-provider@2.9.1';
@@ -45,7 +44,8 @@ async function connectWalletWithWeb3Modal(
       provider.connect();
     }
   } catch (e) {
-    if (log) console.error(e);
+    if (log) console.error(`${CustomError.CONNET_FAILED} ${e}`);
+    throw new Error(`${CustomError.CONNET_FAILED} ${e}`);
   }
 }
 
@@ -65,21 +65,34 @@ export async function connectWallet(
       if (!wallet) {
         if (!projectId) throw new Error(CustomError.NO_PROJECTID);
         if (!name || !description || !url || !icon) throw new Error(CustomError.NO_WALLET_METADATA);
-        await connectWalletWithWeb3Modal(projectId, name, description, url, icon, log || false);
+        try {
+          await connectWalletWithWeb3Modal(projectId, name, description, url, icon, log || false);
+          if (log) console.log('successfully connected!')
+        } catch (e) {
+          if (log) console.error(`${CustomError.CONNET_FAILED} ${e}`);
+          throw new Error(`${CustomError.CONNET_FAILED} ${e}`);
+        }
       } else {
         switch (wallet) {
           case AvailableWallets.WEB3MODAL:
           case AvailableWallets.WALLET_CONNECT:
             if (!projectId) throw new Error(CustomError.NO_PROJECTID);
             if (!name || !description || !url || !icon) throw new Error(CustomError.NO_WALLET_METADATA);
-            await connectWalletWithWeb3Modal(projectId, name, description, url, icon, log || false);
+            try {
+              await connectWalletWithWeb3Modal(projectId, name, description, url, icon, log || false);
+            } catch (e) {
+              if (log) console.error(`${CustomError.CONNET_FAILED} ${e}`);
+              throw new Error(`${CustomError.CONNET_FAILED} ${e}`);
+            }
             break;
           default:
+            if (log) console.error(CustomError.NOT_AVAILABLE_WALLET);
             throw new Error(CustomError.NOT_AVAILABLE_WALLET);
         }
       }
       break;
     default:
+      if (log) console.error(CustomError.NOT_AVAILABLE_WALLET);
       throw new Error(CustomError.NOT_AVAILABLE_NETWORK);
   }
 }

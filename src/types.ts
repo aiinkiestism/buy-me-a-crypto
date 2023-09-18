@@ -58,5 +58,6 @@ export enum CustomError {
   INVALID_OPTIONS = 'Invalid Options.',
   NO_PROJECTID = 'No Project ID of Wallet Connect Web3Modal.',
   NO_WALLET_METADATA = 'No Wallet Metadata.',
-  PROVIDER_UNDEFINED = 'Wallet Provider Undefined.'
+  PROVIDER_UNDEFINED = 'Wallet Provider Undefined.',
+  CONNET_FAILED = 'Connect Failed.'
 }
