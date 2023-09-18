@@ -7,7 +7,7 @@ import { provider } from './connect.ts';
 export async function transfer(
   option: NetworkProps,
   amount: number,
-  receiver: string, // better typing needed
+  receiver: string,
   maxAmount?: number,
 ): Promise<void | CustomError> {
   if (maxAmount && amount > maxAmount) throw new Error(CustomError.EXCEED_MAX_AMOUNT);
