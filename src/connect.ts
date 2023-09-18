@@ -83,5 +83,3 @@ export async function connectWallet(
       throw new Error(CustomError.NOT_AVAILABLE_NETWORK);
   }
 }
-
-// export async function connectWalletonReact() {}
