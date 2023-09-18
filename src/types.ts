@@ -1,3 +1,11 @@
+import { Eip1193Provider } from 'npm:ethers@6.7.1';
+
+declare global {
+  interface Window {
+    ethereum?: Eip1193Provider;
+  }
+}
+
 export enum AvailableTokens {
   ETH = 'ETH',
   DAI = 'DAI',
