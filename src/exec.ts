@@ -9,6 +9,7 @@ export async function transfer(
   amount: number,
   receiver: string,
   maxAmount?: number,
+  log?: boolean,
 ): Promise<void | CustomError> {
   if (maxAmount && amount > maxAmount) throw new Error(CustomError.EXCEED_MAX_AMOUNT);
   if (!maxAmount && amount > DEFAULT_MAX_AMOUNT) throw new Error(CustomError.EXCEED_MAX_AMOUNT);
@@ -21,11 +22,12 @@ export async function transfer(
     // const _provider = await ethers.getDefaultProvider(option.network);
     const _provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await _provider.getSigner();
+    if (log) console.log(signer);
     const sender = provider.accounts[0];
-    console.log(provider.accounts);
-    console.log(ethers.parseEther(amount.toString()));
+    if (log) console.log(provider.accounts);
+    if (log) console.log(ethers.parseEther(amount.toString()));
     const currentGas = BigInt(await provider.request({ method: 'eth_gasPrice' }));
-    console.log(currentGas);
+    if (log) console.log(currentGas);
     const tx = {
       from: sender,
       to: receiver,
@@ -35,8 +37,8 @@ export async function transfer(
       gasPrice: currentGas,
     };
     const estimatedGas = _provider.estimateGas(tx);
-    console.log(estimatedGas);
+    if (log) console.log(estimatedGas);
     const res = await signer.sendTransaction(tx);
-    console.log(res);
+    if (log) console.log(res);
   }
 }

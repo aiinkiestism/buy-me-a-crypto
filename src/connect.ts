@@ -21,7 +21,7 @@ async function connectWalletWithWeb3Modal(
   description: string,
   url: string,
   icon: string,
-  log: boolean,
+  log?: boolean,
 ): Promise<void | CustomError> {
   try {
     if (!provider) {
