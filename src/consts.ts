@@ -1,12 +1,13 @@
-import { AvailableOptionsType,AvailableNetworks,AvailableTokens } from "./types.ts";
+import { AvailableOptionsType,AvailableNetworks,AvailableTokens, NetworkNames, Networks, NetworkTypes } from "./types.ts";
 
 export const AvailableOptions: AvailableOptionsType = {
   ETH_MAINNET: {
     key: AvailableNetworks.ETH_MAINNET,
     tokens: [AvailableTokens.ETH, AvailableTokens.DAI, AvailableTokens.USDC],
-    name: 'Ethereum Mainnet',
+    name: NetworkNames.ETH_MAINNET,
     chainId: 1,
-    network: 'homestead',
+    network: Networks.ETH_MAINNET,
+    networkType: NetworkTypes.ETH_MAINNET,
     explorer: {
       url: "https://etherscan.io",
       apiUrl: "https://api.etherscan.io"

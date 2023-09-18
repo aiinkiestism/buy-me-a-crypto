@@ -8,12 +8,25 @@ export enum AvailableNetworks {
   ETH_MAINNET = 'ETH_MAINNET',
 }
 
+export enum NetworkNames {
+  ETH_MAINNET = 'Ethereum Mainnet',
+}
+
+export enum Networks {
+  ETH_MAINNET = 'homestead',
+}
+
+export enum NetworkTypes {
+  ETH_MAINNET = 'evm',
+}
+
 export type NetworkProps = {
   key: AvailableNetworks;
   tokens: AvailableTokens[];
-  name: string;
+  name: NetworkNames;
   chainId: number;
-  network: string;
+  network: Networks;
+  networkType: NetworkTypes;
   explorer: {
     url: string;
     apiUrl: string;
@@ -36,4 +49,5 @@ export enum CustomError {
   INVALID_OPTIONS = 'Invalid Options.',
   NO_PROJECTID = 'No Project ID of Wallet Connect Web3Modal.',
   NO_WALLET_METADATA = 'No Wallet Metadata.',
+  PROVIDER_UNDEFINED = 'Wallet Provider Undefined.'
 }
