@@ -1,4 +1,5 @@
 import { ethers } from 'npm:ethers@6.7.1';
+import validator from 'npm:validator@13.11.0';
 import { CustomError, NetworkProps, NetworkTypes } from './types.ts';
 import { DEFAULT_MAX_AMOUNT } from "./consts.ts";
 import { provider } from './connect.ts';
@@ -11,6 +12,7 @@ export async function transfer(
 ): Promise<void | CustomError> {
   if (maxAmount && amount > maxAmount) throw new Error(CustomError.EXCEED_MAX_AMOUNT);
   if (!maxAmount && amount > DEFAULT_MAX_AMOUNT) throw new Error(CustomError.EXCEED_MAX_AMOUNT);
+  if (!validator.isEthereumAddress(receiver)) throw new Error(CustomError.INVALID_ADDRESS);
 
   if (option.networkType === NetworkTypes.ETH_MAINNET) {
     if (!provider || !window.ethereum) throw new Error(CustomError.PROVIDER_UNDEFINED);

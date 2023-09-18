@@ -54,6 +54,7 @@ export enum CustomError {
   NOT_AVAILABLE_NETWORK = 'Please provide the available network.',
   NOT_AVAILABLE_WALLET = 'Please provide the available wallet wrapper.',
   EXCEED_MAX_AMOUNT = 'Amount exceeds MAX AMOUNT.',
+  INVALID_ADDRESS = 'Invalid Address.',
   INVALID_OPTIONS = 'Invalid Options.',
   NO_PROJECTID = 'No Project ID of Wallet Connect Web3Modal.',
   NO_WALLET_METADATA = 'No Wallet Metadata.',
